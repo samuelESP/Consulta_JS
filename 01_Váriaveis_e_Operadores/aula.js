@@ -7,6 +7,7 @@ const b = 2;//BlockScoping; não faz Hoisting; Como se trata de uma constante el
 console.log(x, y, b);
 
 // "=" é o valor de atribuição.
-//"+" soma; "-" subtração; "/" DIvidir; "*" multiplicar; "%" resto da divisão; "**"potencia.
+//"+" soma; "-" subtração; "/" DIvidir; "*" multiplicar; "%" resto da divisão; "**" potencia;"++" incremento; "--" decremento.
+
 let a = 2 * 2;
 console.log(y**b, a);
