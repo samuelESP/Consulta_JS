@@ -1,3 +1,3 @@
 # JavaScript Developer: Módulo I
 
-Repositório de Referência do Módulo I da Trilha "JavaScript Developer"
+Repositório de Referência do Bootcamp Orange Tech+  - administrado pela Digital Inovation One(DIO.)
