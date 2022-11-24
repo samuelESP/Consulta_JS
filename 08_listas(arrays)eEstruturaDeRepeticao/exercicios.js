@@ -34,10 +34,22 @@ console.log(pares);
 /*5) Dado uma lista com as médias tiradas pelos alunos. Imprima todas as médias que ficaram de recuperação (média < 5).
    Ex de lista = [2, 7, 3, 8, 10, 4]*/
 
-
+const media = [2, 7, 3, 8, 10, 4];
+let recup=[];
+for (let i = 0; i < media.length; i++) {
+    if(media[i] < 5){
+        recup.push(media[i]);
+    }
+    
+}
+console.log(recup);
 
 
 
 
 /*6) Dado uma lista com as notas tiradas pelos alunos. imprima a maior nota.
    Ex de lista de notas = [2, 7, 3, 8, 10, 4]*/
+
+
+const notas = [2, 7, 3, 8, 10, 4];
+console.log(Math.max(...notas));
