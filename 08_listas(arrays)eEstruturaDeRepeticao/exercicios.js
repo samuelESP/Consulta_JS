@@ -52,4 +52,17 @@ console.log(recup);
 
 
 const notas = [2, 7, 3, 8, 10, 4];
-console.log(Math.max(...notas));
+
+let variavel = 0;
+
+for (let i = 0; i < notas.length; i++) {
+    
+    if (notas[i]>variavel) {
+        
+        variavel = notas[i];
+    }
+
+}
+console.log(variavel);
+
+//console.log(Math.max(...notas)); --> resposta alternativa
