@@ -1,0 +1,58 @@
+.B{
+    background-color: #53d0b2;
+}
+.B .number{
+    color: #8fd7c2;
+}
+.B .type{
+    background-color: #8fd7c2;
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    margin: .25rem 0;
+    border-radius: 1rem;
+}
+
+
+.S{
+    background-color: #7dbef5;
+}
+.S .number{
+    color: #aecbe6;
+}
+.S .type{
+    background-color: #aecbe6;
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    margin: .25rem 0;
+    border-radius: 1rem;
+}
+
+
+.C{
+    background-color: #f4736d;
+}
+.C .number{
+    color: #efa0a0;
+}
+.C .type{
+    background-color: #efa0a0;
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    margin: .25rem 0;
+    border-radius: 1rem;
+}
+
+
+.P{
+    background-color: #f8d571;
+}
+.P .number{
+    color: #a07a21;
+}
+.P .type{
+    background-color: #a07a21;
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    margin: .25rem 0;
+    border-radius: 1rem;
+}
