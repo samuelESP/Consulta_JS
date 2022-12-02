@@ -43,3 +43,28 @@ for (let i = 0; i < notas.length; i++) {
 
 console.log("A média do miliante é de " + sum / notas.length); //Toda vez eu adicionar uma nova push nas notas ele iram modificar o valor da minha soma
 
+
+//Switch Case:
+/* Usamos quando se tem uma verificação pra fazer, em outras palavras é uma lista de casos que é usado para comprara diversos valores */
+
+
+function getAnimalByID(id){
+    switch (id) {
+        case 1:
+            return'Porco';
+            break;
+        case 2:
+            return 'Galinha';
+            break;
+        case 3:
+            return 'Cachorro';
+            break;
+        case 4:
+            return 'gato';
+            break;
+        default:
+            return 'Id não indentificado';
+            break;
+    }
+}
+console.log(getAnimalByID(1));
