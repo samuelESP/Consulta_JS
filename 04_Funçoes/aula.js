@@ -58,3 +58,29 @@ const soma2 = ( function (a, b) {
 
 })(1,2);
 console.log(soma2);
+
+
+/* Arrow Function:
+Uma arrow function é como se fosse uma abreviação da função, ou seja, ela encurta a função fazendo ela ficar mais elegante e organizada para quem está vendo,
+Observação: geralmente se usa ela junto com a técnica de função anônima
+*/
+/* const helloWorld = function(){
+    return 'Hello World';
+} 
+OU
+const helloWorld = () =>{
+    return 'Hello World';
+}
+OU
+*/
+const helloWorld = () => 'Hello World';//Quando tem uma linha só não precisa escrever return e nem das chaves.
+console.log(helloWorld());
+
+const somando = (a,b) => a + b;
+console.log(somando(1,2));
+//Se houver so 1 paramêtros eu posso dispensar os parenteses:
+const numeros = a => a;
+console.log(numeros(2));
+
+
+//É muito importante saber que as arrow functions não fazem Hoisting
