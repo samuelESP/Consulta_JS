@@ -43,3 +43,18 @@ console.log("Será pago um valor de R$"+ acrecentarJuros(100, 10));
     
 }*/
 
+//Função anônima:
+//É uma função em que não se declara um nome especifico para ela
+
+const testando = function(){
+    return 'Ola mundo'
+}
+console.log(testando());//Note que a minha variável necessitou de um parâmtro, mesmo sendo undefined;
+
+//Eu ainda posso usar uma função dentro de outra:
+const soma2 = ( function (a, b) {
+    
+    return a+b;
+
+})(1,2);
+console.log(soma2);
