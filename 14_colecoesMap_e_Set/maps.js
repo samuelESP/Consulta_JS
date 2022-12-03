@@ -37,6 +37,14 @@ console.log(novo);/*Map(3) {
 
   //---------------------------------------------------------------------//
 
+//Chegar se existe dentro do Map:
+console.log(Mymap.has('pais'));//true
+console.log(Mymap.has('Uruguai'));//false--> Pois ele so verifica keys
+
+
+
+  //---------------------------------------------------------------------//
+
 //Eu ainda posso pegar um objeto já declarado e jogalo dentro do Map, usando o comando Object.entiries(nomeDoObjeto);
 
   const luke = {
