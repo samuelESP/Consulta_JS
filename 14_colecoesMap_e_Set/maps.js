@@ -67,6 +67,11 @@ console.log(DeMapParaObjeto);//{ firstName: 'Luke', lastName: 'Skywalker', occup
   Mymap.delete('pais');//Eu posso usar .Clear para limpar tudo que está dentro do meu Map
 console.log(Mymap);//Map(0) {}
     //---------------------------------------------------------------------//
+/*Em suma, os Maps são semelhantes aos Objetos no sentido de que têm pares de chave-valor, mas os Maps têm diversas vantagens em relação aos objetos:
 
+Tamanho - Os Maps têm uma propriedade size, ao passo que os Objetos não têm uma maneira integrada de descobrir seu tamanho.
+Iteração - Os Maps podem ser iterados diretamente, ao passo que os Objetos não.
+Flexibilidade - Os Maps podem ter qualquer tipo de dados (primitivo ou Objeto) como a chave para um valor, enquanto Objetos admitem apenas strings.
+Ordenados - Os Maps retêm sua ordem de inserção, ao passo que os objetos não têm uma ordem garantida. */
 
 
