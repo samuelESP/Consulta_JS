@@ -113,3 +113,82 @@ class Testando {
 }
 const vitor = new Testando('Vitor da Souza', 43); 
 vitor.metodo();
+
+
+
+//--------------Call---------------//
+//Uma propriedade interessante de se usar é o objeto..call();
+//Quando eu uso o call eu estou tentando chamar uma instrução para que o this use, mesmo não estando dentro ou ligada a outra.
+const pessoa = {
+    nome : 'Samuel',
+    sobre: 'Espíndola'
+}
+const pet = {
+    gato : 'Fallen'
+}
+ function getSomething() {
+    console.log(this.nome);
+ }
+ 
+getSomething.call(pessoa);
+//É de extrema importância ressaltar que a primeira coisa que vem entre ‘ ( ) ’ é o que o call chama, e não um parâmetro.
+
+
+class numeros{
+    num1;
+    num2;
+    constructor(num1,num2){
+        this.num1 =num1;
+        this.num2=num2;
+    }
+}
+const num = new numeros(3,5);
+
+function soma(a,b) {
+    console.log(this.num1+ this.num2 + a + b);
+}
+
+soma.call(num,5,10);
+
+
+//--------------Apply---------------//
+
+/*Ela é muito parecida com call, mas ela tem uma diferença. 
+Essa diferença é que a Apply na hora de passar argumentos eles devem ser dentro de um array ‘[ ]’ .
+ */
+
+const primeiroNome = {
+    nome : 'Miguel',
+};
+
+const profissao = {
+    setor : 'Obras',
+};
+
+function concatena(a) {
+    console.log(`${this.nome} É um trabalhador do setor de ` + a +` em uma empresa multinacional`);
+}
+concatena.apply(primeiroNome, [profissao.setor]);
+//É de extrema importância ressaltar que a primeira coisa que vem entre ‘ ( ) ’ é o que o apply chama, e não um parâmetro. O parâmetro vem depois dentro de colchetes ‘[ ]‘.
+
+const myObjeto ={
+    num1: 17,
+    num2 : 13,
+};
+
+function testeDeApply(u) {
+    console.log(this.num1 + this.num2 + u);
+}
+testeDeApply.apply(myObjeto , [30]);
+
+
+//--------------Bind---------------//
+//O método bind() cria uma nova função que, quando chamada, tem sua palavra-chave this definida com o valor fornecido, com uma sequência determinada de argumentos precedendo quaisquer outros que sejam fornecidos quando a nova função é chamada.
+
+function retornaNome() {
+    return this.nome + " habita o pais: " + this.pais;
+};
+let samuel = retornaNome.bind({nome : 'Samuel', pais : 'Brasil'});
+ 
+console.log(samuel());//Samuel habita o pais: Brasil
+console.log(samuel);//[Function: bound retornaNome]console.log(retornaNome());
