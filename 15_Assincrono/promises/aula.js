@@ -160,7 +160,7 @@ fetch(`https://api.github.com/users/${userName}`, {//fetch retorna uma promessa
     },
 })
 .then((response) => {
-    console.log(typeof response);
+    console.log("Esse fetch vai me retorna um....: "+ typeof response);
     console.log(response);
     return response.json()
 })
