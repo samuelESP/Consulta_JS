@@ -311,3 +311,11 @@ Se for a mesma coisa ele não vai fazer mudança alguma, ele vai manter o compon
   7. **componentWillUnmount**: Vai chegar a hora então do componente morrer;
 
   Eu consigo manipular o que vai acontecer quando esse componente morrer.
+
+<br><br>
+
+# React CLI(CRA)
+
+Creat React App é um ambiente confortável para aprender React, e é a melhor maneira de começar um single-page application em React.
+
+Além de configurar seu ambiente de desenvolvimento para utilizar as funcionaldiades mais recentes do JavaScript, ele fornece uma experiência de desenvolvimento agradável, e otimiza o seu tempo.
