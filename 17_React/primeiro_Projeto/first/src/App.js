@@ -1,9 +1,13 @@
+import Button from "./components/Button";
 
-
-function App() {
+function App({nome}) {
   return (
-    <div className="App">
-      Olá React
+    <div className="App"> 
+    <h1> Olá {nome}</h1>
+    <Button title='entrar'/>
+    <Button title='fechar'/>
+    <Button title='abrir'/>
+
     </div>
   );
 }
