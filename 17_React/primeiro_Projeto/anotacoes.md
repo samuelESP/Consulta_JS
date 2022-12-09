@@ -1,5 +1,8 @@
 # Como criar um projeto React?
 
+
+[React](https://reactjs.org/)
+
 1. No meu terminai eu vou digitar: *npx create-react-app nome-do-meu-projeto*
  - O npx é um pacote do npm que vai baixar, toda vez que iniciado, o repositório da versão mais recente do REACT. OBS..: Eu posso usar o npm no lugar do npx sem problema algum;
 
@@ -315,6 +318,9 @@ Se for a mesma coisa ele não vai fazer mudança alguma, ele vai manter o compon
 <br><br>
 
 # React CLI(CRA)
+
+
+[React CLI](https://create-react-app.dev/)
 
 Creat React App é um ambiente confortável para aprender React, e é a melhor maneira de começar um single-page application em React.
 
