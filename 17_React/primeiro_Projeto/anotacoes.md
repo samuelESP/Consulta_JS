@@ -325,3 +325,139 @@ Se for a mesma coisa ele não vai fazer mudança alguma, ele vai manter o compon
 Creat React App é um ambiente confortável para aprender React, e é a melhor maneira de começar um single-page application em React.
 
 Além de configurar seu ambiente de desenvolvimento para utilizar as funcionaldiades mais recentes do JavaScript, ele fornece uma experiência de desenvolvimento agradável, e otimiza o seu tempo.
+
+<br><br>
+
+### React Router
+<br>
+
+[React Router](https://v5.reactrouter.com/web/guides/quick-start)
+
+ Vamos iniciar um projeto e adicionar uma navegação com o react router: ***npm add react-router-dom***;
+
+<br>
+ Vamos criar duas pasta(home e login) com o intuito de facilitar a aprendizagem de navegação;
+ Dentro delas se encontrar um index.jsx que retorna um jsx.
+
+```JS
+//home 
+const Home = () => {
+  return(<>
+        <h1>Estou na página de Login Home</h1>
+        <button>Fazer Login</button>
+        </>)
+}
+
+export {Home};
+
+//Login
+
+const Login = () => {
+  return(<>
+        <h1>Estou na página de Login</h1>
+        <button>Voltar para Home</button>
+        </>)
+}
+
+export {Login};
+```
+
+ Vou ir no meu APP e criar a estrutura: 
+
+ **Antes no meu App.js**
+ ```JS
+ const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+ ```
+**Depois de add a estrutura do React Router**
+ ```JS
+ 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import {Home} from "./pages/home"
+import {Login} from "./pages/login"
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element = {<Login />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+ ```
+**Minhas dependências do ReactRouter e dp meu projeto**
+```JS
+import {
+ BrowserRouter as Router,
+ Routes,
+ Route,
+ Link
+} from "react-router-dom";
+import {Home} from "./pages/home"
+import {Login} from "./pages/login"
+
+```
+
+**Todos meus elementos devem ser inseridos dentro do Router**
+
+```JS
+<Router></Router>
+```
+
+**Routes faz todo o esquema de navegação, ele funciona como se fosse um switch de página**
+
+```JS
+<Routes></Routes>
+```
+
+**Route que passa o path e o elemento que eu quero que ele renderiza, conforme a minha url**
+
+```Js
+<Route path="/" element={<Home />} />
+<Route path="/login" element = {<Login />} />
+```
+
+*Se eu usar o path: http://localhost:3000/ _ ele me joga na página Home;
+
+Se eu usar o path : http://localhost:3000/login _ Ele me joga na página de login;
+
+Mas, queremos que ao clicar nos botões uma página me jogue para outra, para fazer isso eu tenho que modificar meus elementos usando a propriedade Link do React-Router*
+
+```JS
+
+//home
+import { Link } from "react-router-dom";
+const Home = () => {
+    return(<>
+        <h1>Estou na página de Login Home</h1>
+        <Link to="/Login">Fazer Login</Link >
+        </>)
+}
+export {Home};
+
+//login
+
+import { Link } from "react-router-dom";
+const Login = () => {
+    return(<>
+        <h1>Estou na página de Login</h1>
+        <Link to="/">Voltar para Home</Link >
+        </>)
+}
+
+export {Login};
+
+```
