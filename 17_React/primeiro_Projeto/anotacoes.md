@@ -54,13 +54,7 @@
 
 - Ao passar do tempo que vamos escalando bibliotecas ele vai adicionando nas dependências.
 
-
-# Como rodar o nosso projeto?
-
-1. Abre o terminal;
-2. Entra na pasta do projeto;
-3. Coloca no terminal --> npm run start;
-4. Ele ja vai rodar o nosso projeto e vai abrir um servidor na web para ele.
+<br><br>
 
 # OBS:
 
@@ -75,3 +69,87 @@ root.render(
 
 ```
 Ele é meio que uma tag nova.
+
+# Como rodar o nosso projeto?
+
+1. Abre o terminal;
+2. Entra na pasta do projeto;
+3. Coloca no terminal --> npm run start;
+4. Ele ja vai rodar o nosso projeto e vai abrir um servidor na web para ele.
+
+
+
+# Componentes de classe
+
+Básicamente tudo dentro do React é um componente;
+
+Existe algumas formas diferentes de criar Componentes:
+Até a versão 15 do react só existia componentes de classes, que eram um pouco verboso para fazer isso.
+
+Exemplo de um componente de classe:
+
+```JS
+import React, {Component} from "react";
+export default class AppClass extend Component{
+  constructor(props){
+    super(props);
+    this.state = {counter: 0 }
+    this.handleClick = this.handleClick.bind(this)
+  }
+}
+```
+
+Toda função que eu tive que eu quise-se usar, eu teria quer fazer o bind dele e tudo mais, deixando o código muito verboso.
+
+Então os debs que usam o React começaram a usar componentes funcionais.
+
+
+# Componentes Funcionais
+O exemplo abaixo é um componente de classe usado como exemplo, mas, transformado em componente funcional:
+ ```JS
+ function App() {
+  
+  const handleClick = () =>{
+
+  }
+
+  return (
+    <div className="App">Olá React</div>
+    );
+
+ }
+ 
+export default App;
+ ```
+ Ele nada mais é que uma função retornado um JSX;
+
+ Normalmente a gente tem uma função, e ela é exportada.
+
+ É interessanter saber que os meus componentes funcionais aceitam propriedades, exemplo:
+
+**Dentro do meu index.js**
+```JS
+import App from './App';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App nome="Samuel"/>
+  </React.StrictMode>
+);
+```
+
+**Dentro do meu App.js**
+ ```JS
+ function App({nome}) {
+  return (
+    <div className="App">
+      Olá React {nome}
+    </div>
+  );
+}
+
+export default App;
+```
+Basicamente isso seria passar parâmetros para o componente.
