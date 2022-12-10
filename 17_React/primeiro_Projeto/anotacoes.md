@@ -461,3 +461,75 @@ const Login = () => {
 export {Login};
 
 ```
+<br>
+
+# Styled-components
+
+[styled-components](https://styled-components.com/)
+
+ Ele basicamente é que possibilita escrever código CSS dentro do JavaScript. Ganhando assim mais agilidade e precisão no desenvolvimento web.
+
+ Nós conseguimos usar as proprias sintaxes do CSS3 dentro do me JS, e fazer a estilização.
+
+ #### instalação(na pasta do meu projeto
+ ):
+
+ **npm install --save styled-components**
+
+ ### Utilizando
+ Exemplo:
+ Create a Title component that'll render an h1 tag with some styles
+ 
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+# OBS:
+
+1. Como toda biblioteca ela precisa ser importada para a minha página:
+```JS 
+import styled, {css} from 'styled-components';;
+```
+2. Para usar o styled normalmente se chama uma variável para manipular, e digitamos qual tipo de tag ele recebe no nossa HTML:
+```JS
+export const ButtonContainer = styled.button//Do tipo button do html
+```
+3. Então podemos passar a estilização para o componente:
+```CSS
+export const ButtonContainer = styled.button`
+background: #565656;
+border-radius: 22px;
+position : relative;
+
+color: #FFFF;
+padding: 2px 12px;
+min-width: 120px;
+width: 100%;
+
+`
+```
+
+
+4. Podemos passar propriedades para ele:
+```CSS
+${({variant}) => variant != "primary" && css`
+    min-width: 167px;
+    height: 33px;
+
+    background: #E4105D;
+
+    &::after {
+        content: "";
+        position: absolute;
+        border: 1px solid #e4105d;
+        top: -5px;
+        left: -6px;
+        width: calc(100% + 10px);
+        height: calc(100% - 10px);
+        border-radius: 22px;
+    }
+`}
+`
+```
