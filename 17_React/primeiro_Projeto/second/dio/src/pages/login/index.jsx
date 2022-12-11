@@ -1,4 +1,5 @@
 import { MdEmail, MdLock } from 'react-icons/md';
+import { useNavigate  } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
@@ -7,6 +8,11 @@ import { Input } from '../../components/Input';
 import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const handleClickSignIn = () => {
+        navigate('/feed')
+    }
     return(<>
         <Header />
         <Container>
@@ -15,7 +21,6 @@ const Login = () => {
                 A plataforma para você aprender com experts, dominar as principais tecnologias
                 e entrar mais rápido nas empresas mais desejadas.
                 </Title>
-                <Button title='Começar' variant="secondary" />
             </Column>
             <Column>
             <Wrapper>
@@ -24,7 +29,7 @@ const Login = () => {
             <form >
                 <Input placeholder="E-mail" leftIcon={<MdEmail />} />
                 <Input placeholder="Senha" type="password" leftIcon={<MdLock />}/>
-                <Button title="Entrar" variant="secondary" type="submit"/>
+                <Button title="Entrar" variant="secondary" type="submit" onClick={handleClickSignIn}/>
             </form>
             <Row>
                 <EsqueciText>Esqueci minha senha</EsqueciText>

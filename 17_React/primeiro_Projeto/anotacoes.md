@@ -539,3 +539,26 @@ ${({variant}) => variant != "primary" && css`
 Como o próprio nome diz, se caracteriza como uma biblioteca de icones para serem usados em react.
 
 para instalar basta: **npm install react-icons**
+
+<br>
+
+# Navegar entre as Pages
+
+Para realizar isso eu posso tanto usar o LINK(já foi comentado aqui nesse documento), ou o useNavigate:
+
+```JS
+import { useNavigate  } from "react-router-dom";
+
+const Home = () => {
+
+    const navigate = useNavigate();
+
+    const handleClickSignIn = () => {
+        navigate('/login')
+    }
+    ........
+    <Button title="Começar agora" variant="secondary" onClick={handleClickSignIn}/>
+    //Toda vez que alguem clicar nesse button ele vai me direcionar para: navigate('/login')
+}
+```
+Agora basta usar a mesma propriedade para as outras páginas, direcionando-as para seus devidos caminhos.
