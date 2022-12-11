@@ -16,12 +16,18 @@ ${({variant}) => variant !== "primary" && css`
 
     background: #E4105D;
 
+    &:hover{
+        opacity: 0.6;
+    }
+
     &::after {
         content: '';
         position: absolute;
         border: 1px solid #E4105D;
-        top: -5px;
+        top: -6px;
         left: -6px;
+        right: -6px;
+        bottom: -6px;
         width: calc(100% + 10px);
         height: calc(100% + 10px);
         border-radius: 22px;
