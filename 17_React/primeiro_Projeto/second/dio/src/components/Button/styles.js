@@ -10,14 +10,19 @@ padding: 2px 12px;
 min-width: 120px;
 width: 100%;
 
+&:hover{
+    cursor: pointer;
+    background-color: rgb(228, 16, 93);
+}
+
 ${({variant}) => variant !== "primary" && css`
-    min-width: 167px;
+    max-width: 140px;
     height: 33px;
 
     background: #E4105D;
 
     &:hover{
-        opacity: 0.6;
+        box-shadow: rgb(228 16 93) 0px 0px 48px 0px;
     }
 
     &::after {

@@ -16,7 +16,7 @@ const Header = ({autenticado}) => {
                 <Input placeholder='Buscar....'/>
             </BuscarInputContainer>
             <Menu>Live Code</Menu>
-            <Menu>Golbal</Menu>
+            <Menu>Global</Menu>
           </Row>  
           <Row>
             <MenuRight href='#' >Home</MenuRight>

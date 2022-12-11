@@ -533,3 +533,9 @@ ${({variant}) => variant != "primary" && css`
 `}
 `
 ```
+
+# React-Icons
+
+Como o próprio nome diz, se caracteriza como uma biblioteca de icones para serem usados em react.
+
+para instalar basta: **npm install react-icons**
