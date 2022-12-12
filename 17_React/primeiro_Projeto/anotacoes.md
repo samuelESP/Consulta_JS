@@ -562,3 +562,124 @@ const Home = () => {
 }
 ```
 Agora basta usar a mesma propriedade para as outras páginas, direcionando-as para seus devidos caminhos.
+
+<br>
+
+# Hooks
+ Até a Versão 16.7 do React algumas funcionalidades só eram possíveis de ser acessadas atráves de classes(como, por exemplo, o lifecycle). Apessar da possibilidade de criar componentes a partir de função, até essa versão, eles só recebiam propriedades, não podendo acessar todas as funcionalidades do React, como as classes.
+
+Na versão 16.8, foram lançados os hooks, que permitem os usos de vários recursos de forma simples atráves de funções. Eles também ajudam a organizar a lógica utilizada dentro dos componentes
+
+## **useStates**
+Ele é usado para lidar com os states dentro do componente.
+O que são os States?
+
+      É um estado de algum comportamento, de algo, de dentro do componente, exemplo: 
+      Componente Input: detro desse Input eu posso ter o estado dele, que seria o texto que ele está carregando. A cada alteração que se faz nesse texto, esse componente deve ser alterado na tela para exibir para o user.
+
+      Então, o Estado vai lidar com essas alterações e diferenças que o componente pode ter com o passar do tempo.
+
+```JS
+import { useStates } from 'react';
+
+const Teste = () => {
+
+const [name, setname] = useState("Samuel");
+
+  return(
+    <div>TesteDoTeste</div>
+  )
+}
+```
+***useState( )*** é uma função que recebe como parâmetro: 
+
+<br>
+
+ 1. O valor inicial=**("Samuel");**
+
+<br><br>
+
+O ***useState( )*** retorna um Array com dois valores:
+ 
+ <br>
+
+ 1. Meu Estado= **[name]**
+ 2. Função para alterar esses estado= **[setName]**
+
+<br>
+Se eu quiser mudar esse estado se pode ser feito:
+
+```JS
+import { useStates } from 'react';
+
+const Teste = () => {
+
+const [name, setname] = useState("Samuel");
+
+const MudarMeuNome = () => {
+  setname("Pablo");
+}
+
+  return(
+    <div>
+      <p>
+      {name}
+      </p>
+      <Button onClick={MudarMeuNome} />
+    </div>
+  )
+}
+//Ao clicar no meu button ele vai trocar meu nome de Samuel para Pablo, ou seja, ele vai ter uma mudança de estado
+```
+
+<br>
+
+## **useEffect**
+
+Ele vai trabalhar com o ciclo de vida do meu componente(Já foi citado aqui nesse documento);
+
+```JS
+import { useEffect } from 'react';
+
+const teste = () => {
+  useEffect({} = > {}, [])
+}
+
+```
+O primeiro parâmetro dele é uma função;
+
+O segundo parâmetro é um aaray de dependência, ou seja, é quando eu quero que o userEffect executa novamente.
+Se usar o UsserEffect dessa maneira:`useEffect({} = > {}, [])`;
+
+Ele vai redenrizar so **uma** vez quando o componente for motado em tela.
+
+
+<br>
+
+
+```JS
+import { useStates, useEffect } from 'react';
+
+const Teste = () => {
+
+const [name, setname] = useState("Samuel");
+
+const MudarMeuNome = () => {
+  setname("Pablo");
+}
+
+userEffect({} =>{
+  alert("renderizou")
+}, [nome]);//Toda vez que eu trocar nome, ele vai me mandar um alerta na tela
+
+  return(
+    <div>
+      <p>
+      {name}
+      </p>
+      <Button onClick={MudarMeuNome} />
+    </div>
+  )
+}
+
+```
