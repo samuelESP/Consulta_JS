@@ -7,6 +7,8 @@ import * as yup from "yup";
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from '../../components/Input';
+import {api} from '../../services/api';
+
 
 import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
 
@@ -26,12 +28,19 @@ const Login = () => {
 
     console.log(isValid, errors);
 
-  const onSubmit = data => console.log(data);
-
-
-    const handleClickSignIn = () => {
-        navigate('/feed')
+  const onSubmit = async (formData) => {
+    try {
+        const {data} = await api.get(`/users?email=${formData.email}&password=${formData.password}`);
+        if(data.length == 1){
+            navigate('/feed')
+        }else{
+            alert("Email ou senha inválido")
+        }
+    } catch{
+        alert('Houve um error, tente novamente.')
     }
+};
+
     return(<>
         <Header />
         <Container>

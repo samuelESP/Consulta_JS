@@ -683,3 +683,11 @@ userEffect({} =>{
 }
 
 ```
+# Ferramentas e dependencias intaladas
+
+1. React;
+2. React Router;
+3. React hookForm;
+4. React hookForm resolvers Yup;
+5. Axios;
+6. json-server;
