@@ -690,7 +690,7 @@ userEffect({} =>{
 
 3. React hookForm; --> criar formulários para validação e hooks;
 
-4. React hookForm resolvers Yup; --> validar os formulários;
+4. React hookForm resolvers Yup; --> validar os formulários e fazer requisições;
 
 5. Axios;--> Requisições HTTP;
 
