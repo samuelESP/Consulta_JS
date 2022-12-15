@@ -268,7 +268,7 @@ export default App;
 
 # Ciclo de vida de um componente
 
-<img src="./imgs/CicloDeVidaDoComponent.jpg" />
+<img src="imgs/CicloDeVidaDoComponent.jpg" />
 
 
 O component tem um ciclo de vida bem definido, ele vai ser criado, vai se desenvolver, e por algum motivo ele vai chegar a morrer, seja por troca de tela, entre outras formas.
@@ -694,5 +694,54 @@ userEffect({} =>{
 
 5. Axios;--> Requisições HTTP;
 
-6. json-server;--> Criar uma API temporaria;
+6. json-server;--> Criar uma API temporaria(npm run api --> Para rodar a nossa api);
 
+<br><br>
+
+# TypeScript no React:
+
+Iremos precisar baixar as dependências:
+
+***npm install typescript @types/node @types/react @types/react-dom @types/jest -D***
+
+**-D**, pois, o TS funciona no ambiente de desenvolvimento, ou seja, ele não vai para produção, ele vai pegar tudo que escrevemos dentro dele e transforma em JS.
+
+<br>
+
+Para iniciar o o TypeScript usa-se:
+**npx tsc --init**;
+
+Criando assim um arquivo chamado de tsconfig.js, que comtém todas as configurações do typeScript;
+
+<br><br>
+
+O que eu vou fazer agora é vim arquivo por arquivo e renomear eles para TSX e TS(JSX e JS não vai existir mais).
+
+<br><br>
+
+
+Agora vou colocar no meu console:
+**npm install @types/styled-components -D** ;
+Para que o Styled-components funcione no meu TypeScript
+
+<br><br>
+
+Agora será necessário criar dentro do arquivo tsconfig.json: 
+
+```JS
+}
+  {
+  "jsx": "react-jsx",
+    ...
+  },
+    "include": [
+      "./src/**/*"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+}
+```
+
+Teremos que ir item a item e configurar todos os erros.
+Geralmente vai ser erros de tipagem, então teremos que ir em cada componente e tipar o  nosso código;
