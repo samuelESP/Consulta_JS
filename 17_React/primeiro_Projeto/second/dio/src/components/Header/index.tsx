@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import  logo  from "../../assets/logo-dio.png";
 
@@ -8,7 +8,10 @@ import { Container, Wrapper, BuscarInputContainer, Input, Row, Menu, MenuRight} 
 
 import { UserPicture } from './styles';
 
-const Header = ({autenticado}) => {
+import { IHeader } from "./types";
+
+
+const Header = ({autenticado}:IHeader) => {
   return (
     <Wrapper>
       <Container>

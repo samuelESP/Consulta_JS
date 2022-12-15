@@ -732,6 +732,7 @@ Agora será necessário criar dentro do arquivo tsconfig.json:
 }
   {
   "jsx": "react-jsx",
+  "esModuleIntereop": true,
     ...
   },
     "include": [
@@ -745,3 +746,38 @@ Agora será necessário criar dentro do arquivo tsconfig.json:
 
 Teremos que ir item a item e configurar todos os erros.
 Geralmente vai ser erros de tipagem, então teremos que ir em cada componente e tipar o  nosso código;
+
+Eu von criar separada, em cada componente, um "types.ts", para receber essa tipagem.
+
+<br>
+
+# OBS
+
+1. Caso o TS server esteja aberto, pode reinicialo usando ctrl+shift+P --> Digita "type" --> click on "Restart TS server". Faça isso para atualizar as mudanças no server;
+
+<br><br>
+
+2. Também é comum ele não indentificar as imagens, pois ele tenta decifrar o que é uma .png, .jpg, etc... 
+
+Para resolver isso eu vou na pasta do meu projeto e crio um folder(@types), onde se encontra image.d.ts(Em outras palavras imagens globais), dentro desse arquivo irei gravar:
+```JS 
+declare module "*.png";
+```
+
+Esse comando indica que ***.png*** é um modulo válido para ele usar.
+
+<br><br>
+
+3. As vezes também é comum ele dar error, mesmo estando com a tipagem certa, como o exemplo nesse projeto, tive-mos o Button sendo usado dentro do Header.
+<br><br>
+Esse error ocorreu, pois, no nosso Header apenas usavamos o Title, que foi declarado dentro do Button, mas na hora da tipagem, caso não indique que o componente é opcional, ele vai nós obriga a usar essas caracteristicas.
+<br><br>
+Mas para resolver esse erro bastou dizer que variant e onclick eram Opcionais; Para fazer isso basta colocar "?" antes de : na hora da tipagem:
+
+```JS
+export interface IButton{
+    title:string;
+    variant?:string;
+    onClick?: () => void; //Note a ? antes de :
+}
+```

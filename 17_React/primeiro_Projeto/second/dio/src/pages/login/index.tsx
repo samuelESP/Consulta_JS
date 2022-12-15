@@ -9,6 +9,8 @@ import { Header } from "../../components/Header";
 import { Input } from '../../components/Input';
 import {api} from '../../services/api';
 
+import { IFormData } from "./types";
+
 
 import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
 
@@ -21,14 +23,14 @@ const schema = yup.object({
 const Login = () => {
     const navigate = useNavigate();
 
-    const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+    const { control, handleSubmit, formState: { errors, isValid } } = useForm<IFormData>({
         resolver: yupResolver(schema),
         mode: 'onChange',
     });
 
     console.log(isValid, errors);
 
-  const onSubmit = async (formData) => {
+  const onSubmit = async (formData: IFormData) => {
     try {
         const {data} = await api.get(`/users?email=${formData.email}&password=${formData.password}`);
         if(data.length == 1){
