@@ -688,7 +688,7 @@ userEffect({} =>{
 1. React;
 2. React Router; --> Criar as navegações entre as páginas
 
-3. React hookForm; --> criar formulários para validação;
+3. React hookForm; --> criar formulários para validação e hooks;
 
 4. React hookForm resolvers Yup; --> validar os formulários;
 
