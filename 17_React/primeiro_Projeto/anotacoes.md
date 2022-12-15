@@ -686,8 +686,13 @@ userEffect({} =>{
 # Ferramentas e dependencias intaladas
 
 1. React;
-2. React Router;
-3. React hookForm;
-4. React hookForm resolvers Yup;
-5. Axios;
-6. json-server;
+2. React Router; --> Criar as navegações entre as páginas
+
+3. React hookForm; --> criar formulários para validação;
+
+4. React hookForm resolvers Yup; --> validar os formulários;
+
+5. Axios;--> Requisições HTTP;
+
+6. json-server;--> Criar uma API temporaria;
+
