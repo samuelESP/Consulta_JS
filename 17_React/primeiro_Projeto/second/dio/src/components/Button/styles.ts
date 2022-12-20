@@ -6,7 +6,7 @@ background: #565656;
 border-radius: 22px;
 position : relative;
 
-color: #FFFFF;
+color: #FFFFFF;
 padding: 2px 12px;
 min-width: 120px;
 width: 100%;
