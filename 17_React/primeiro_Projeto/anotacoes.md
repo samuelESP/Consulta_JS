@@ -570,6 +570,8 @@ Agora basta usar a mesma propriedade para as outras páginas, direcionando-as pa
 
 Na versão 16.8, foram lançados os hooks, que permitem os usos de vários recursos de forma simples atráves de funções. Eles também ajudam a organizar a lógica utilizada dentro dos componentes
 
+<br>
+
 ## **useStates**
 Ele é usado para lidar com os states dentro do componente.
 O que são os States?
@@ -649,9 +651,9 @@ const teste = () => {
 O primeiro parâmetro dele é uma função;
 
 O segundo parâmetro é um aaray de dependência, ou seja, é quando eu quero que o userEffect executa novamente.
-Se usar o UsserEffect dessa maneira:`useEffect({} = > {}, [])`;
+Se usar o UsserEffect dessa maneira:`useEffect(() = > {}, [])`;
 
-Ele vai redenrizar so **uma** vez quando o componente for motado em tela.
+Ele vai redenrizar so **uma** vez quando o componente for mostrado em tela, caso eu deixe [ ] vazio.
 
 
 <br>
@@ -683,6 +685,57 @@ userEffect({} =>{
 }
 
 ```
+
+## **useMemo**
+
+Ele memoriza alguma ação, valor, calculo,... Que não precisamos toda hora ficar reenderizando.
+
+Ele possui a mesma sintaxe que o useEffect:
+```JS
+const teste = () => {
+  useMemo({} = > {}, [])
+}
+```
+
+O código abaixo muda toda vez que eu clicar no botão o número que aparece, podendo ele ser 20 ou 30:
+
+```JS
+import { useState, useMemo } from "react";
+
+const App = () => {
+ const [age, setage] = useState(20);
+
+
+ const  MudarIdade = () => {
+  setage(prev => prev == 20 ? 30 : 20 )
+ }
+
+const calculo = useMemo(() => {
+  return 10 * age;
+}, [age])
+console.log(calculo);
+
+
+  return(
+    <div>
+      <p>
+        {age}
+      </p>
+      <button onClick={MudarIdade}>Alterar</button>
+
+    </div>
+  )
+}
+
+export default App;
+
+```
+Toda vez que se clica no botão, o age será alterado, ativando assim o useMemo, que ira printar no meu console o meu age atual vezes 10;
+
+``Caso eu passe dentro do meu useMemo [ vazio ], ele não irar alterar o age na hora de printar, dando assim sempre a mesma conta``
+
+
+
 # Ferramentas e dependencias intaladas
 
 1. React;
