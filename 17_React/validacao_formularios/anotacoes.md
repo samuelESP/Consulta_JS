@@ -153,11 +153,84 @@ O yup será usado para validação de um formulário:
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
-//Obs: essa parte abaixo deve ser feita fora da minha função.
-const schema = yup.object({//A partir daqui eu defino as coissas como JSON(chave: key):
-  firstName: yup.string().required(),
-  age: yup.number().positive().integer().required(),
-}).required();
+
+const schema = yup.object({//A partir daqui eu defino as coissas como JSON(chave: key), e poderia colocar campos como obrigatórios:
+
+  name: yup.string().min(2, 'minimo 2 caracteres').required('Campo Obrigatório'),
+  email: yup.string().email("email inválido").required("Campo obrigatório"),
+  }).required();
 
 ```
+ Tudo o que eu passar para o meu schema vai ser requerido como obrigatório, caso contrário, ele não satisfara a minha operação, resultando em uma mensagem de error que eu posso modificar.
 
+
+```Js
+//Dentro do meu useForm eu terei que passar o meu schema, dessa maueira:
+const { register, handleSubmit, formState:{ errors }} = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onBlur',//esse mode me retorna quando a menssagem de error deverá aparecer
+    });
+```
+
+Agora basta colocar as mensagens de erro na tela:
+```JS
+{errors?.email?.message}
+{errors?.name?.message}
+```
+Essas menssagem também podem ser estilizada; Geralmente ela é passada para dentro de um outro componente que ira receber essa estilização:
+
+```JS
+//Outro componente
+const Text = ({errorMessage}){
+  return(
+  {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null};
+  );
+}
+
+
+
+
+//styles
+import styled from 'styled-components';
+
+export const ErrorMessage = styled.p`
+    color: red;
+    font-size:14px;
+    margin-top:8px;
+    margin-left:10px;
+`;
+
+
+
+
+//Componente principal
+import React from 'react'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+
+const schema = yup.object({
+    name: yup.string().min(2, 'minimo 2 caracteres').required('Campo Obrigatório'),
+    email: yup.string().email("email inválido").required("Campo obrigatório"),
+  }).required();
+
+
+ const FormNew = () => {
+
+
+  const { register, handleSubmit, formState:{ errors }} = useForm({
+      resolver: yupResolver(schema),
+        mode: 'onBlur',
+    });
+
+
+const App = () =>{
+  return(
+  <Text errorMessage={errors?.name?.message}/>
+  );
+} 
+
+
+
+```
