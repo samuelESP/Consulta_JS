@@ -339,3 +339,15 @@ list.addEventListener('click', hide, false);
 // Só requer um único listener para fazer isso
 ```
 
+## ClassName
+É praticamente uma propriedade que permite ler qual a string que existe dentro do atributo classe.
+
+Ele também permite altera-lá:
+<br>
+<img src="./imgs/Classname.jpg"><br>
+
+## ClassList
+A principal vantagem do ClassList é poder maniuplar a minha classe do elemento, podendo adicionar novas classes, remover, toggle, contains, e etc...
+
+<br>
+<img src="./imgs/classList.jpg"><br>
