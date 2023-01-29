@@ -1,13 +1,14 @@
 "use strict";
 //Linhas
-//6 - 96 --> Primitive, objetos, tuplas, enum... Parte mais fácil
-//97 - 129 --> Alias e Union
-//130 - 172 --> TypeAlias
-//173 - 250 --> Class e Exnteds
-//251 - 293 --> Interface e Extends
-//294 - 314 --> Class e implements e interface
+//15 - 104 --> Primitive, objetos, tuplas, enum... Parte mais fácil
+//105 - 137 --> Alias e Union
+//138 - 179 --> TypeAlias
+//180 - 256 --> Class e Exnteds
+//257 - 298 --> Interface e Extends
+//299 - 314 --> Class e implements e interface
 //315 - 367 --> TypeAlias vs interface
-//368 - 467 --> Generics extends e TypeAlias
+//373 - 467 --> Generics extends e TypeAlias
+//468 - 550 --> TypeUtilities(readonly, Partial, Pick, Omit)
 //Types
 //Existe tipos primitivos e os tipos que o TypeScript implementou
 //Quando eu tento usar um resultado para um variavel que não é o seu tipo certo, ele me retorna um erro dizendo que essa váriavel não aceita tal tipo pois ela é de outro tipo.
@@ -252,3 +253,44 @@ function useState3() {
 const newState3 = useState3(); //Se eu não passar nada ele vai entender que vai ser uma string
 newState3.setState('teste4');
 console.log(newState3.getState());
+const Todo = {
+    title: "Assistir Dark denovo",
+    description: "Relembrar Detalhes",
+    completed: false,
+};
+console.log(Todo);
+//E se eu quiser colocar completed como true? Eu posso fazer assim:?
+Todo.completed = true;
+console.log(Todo);
+const Todo2 = {
+    title: "Assistir Dark denovo",
+    description: "Relembrar Detalhes",
+    completed: false,
+};
+console.log(Todo2);
+//Todo2.completed = true; --> Aqui já me retorna um erro dessa vez;
+function UpdateToDo(todo, fieldUpdate) {
+    return Object.assign(Object.assign({}, todo), fieldUpdate);
+}
+//O Partial deixa todas as proprieades que são passados para ele como opcionais;
+const Todo3 = UpdateToDo(Todo2, { completed: true });
+console.log(Todo3);
+/*type TodoPreview = {
+    title: string;
+    completed: boolean;
+    ele não tem description
+} */
+const Todo4 = {
+    title: "Uncharted",
+    completed: false,
+};
+console.log(Todo4);
+/*type TodoPreview2 = {
+    title: string;
+    completed: boolean;
+} */
+const Todo5 = {
+    title: "God of War",
+    completed: true
+};
+console.log(Todo5);

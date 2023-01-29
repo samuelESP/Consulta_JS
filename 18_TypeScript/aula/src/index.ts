@@ -1,12 +1,13 @@
 //Linhas
-//6 - 96 --> Primitive, objetos, tuplas, enum... Parte mais fácil
-//97 - 129 --> Alias e Union
-//130 - 172 --> TypeAlias
-//173 - 250 --> Class e Exnteds
-//251 - 293 --> Interface e Extends
-//294 - 314 --> Class e implements e interface
+//15 - 104 --> Primitive, objetos, tuplas, enum... Parte mais fácil
+//105 - 137 --> Alias e Union
+//138 - 179 --> TypeAlias
+//180 - 256 --> Class e Exnteds
+//257 - 298 --> Interface e Extends
+//299 - 314 --> Class e implements e interface
 //315 - 367 --> TypeAlias vs interface
-//368 - 467 --> Generics extends e TypeAlias
+//373 - 467 --> Generics extends e TypeAlias
+//468 - 550 --> TypeUtilities(readonly, Partial, Pick, Omit)
 
 
 //Types
@@ -463,5 +464,86 @@ newState3.setState('teste4');
 console.log(newState3.getState());
 
 
+
+/*TypeUtilities- São utilitarios para se trabalhar com tipos. Quando a gente trabalha com tipos existe casos onde se quer fazer uma operação ou outra encima dos próprios tipos, para isso usa esses utilitários*/
+//Os mais comuns são:
+//Readonly<T> - apenas leitura;
+//Partial<T> - opcionais;
+//Pick<T, "elemento a ser observado"> - pega dentro de um objeto os tipos que a gente quer ;
+//Omit <T, "elemento a ser omitido"> - De acordo com os tipos que a gente tem ele vai omitir;
+
+
+
+type TodoT = {
+    title: string;
+    description: string;
+    completed: boolean;
+}
+
+const Todo: TodoT = {
+    title : "Assistir Dark denovo",
+    description : "Relembrar Detalhes",
+    completed : false,
+}
+console.log(Todo);
+//E se eu quiser colocar completed como true? Eu posso fazer assim:?
+Todo.completed = true;
+console.log(Todo);
+//Mas isso muda diretamente no nosso objeto, ento o mais ideal é ter uma função que cria um novo objeto com essa mudança.
+//Eu também posso fazer um Readonly para dizer que o meu item seja lido e não possa ser alterado;
+
+type TodoT2 = {
+    title: string;
+    description: string;
+    completed: boolean;
+}
+
+const Todo2: Readonly<TodoT2> = {
+    title : "Assistir Dark denovo",
+    description : "Relembrar Detalhes",
+    completed : false,
+}
+console.log(Todo2);
+
+//Todo2.completed = true; --> Aqui já me retorna um erro dessa vez;
+
+
+function UpdateToDo(todo: TodoT2, fieldUpdate: Partial<TodoT2>) {
+    return {...todo, ...fieldUpdate}
+}
+//O Partial deixa todas as proprieades que são passados para ele como opcionais;
+
+const Todo3: TodoT2 = UpdateToDo(Todo2 , {completed : true })
+
+console.log(Todo3);
+//Vamos supor que a gente so quer mostrar so o title e o completed, eu não quere descrição, eu posso usar o Pick para isso:
+
+type TodoPreview = Pick<TodoT2,"title" | "completed">
+
+/*type TodoPreview = {
+    title: string;
+    completed: boolean;
+    ele não tem description
+} */
+
+const Todo4: TodoPreview = {
+    title: "Uncharted",
+    completed: false,
+}
+
+console.log(Todo4);
+
+
+//Omit - Eu posso escolher omitir um elemento do meu objeto
+type TodoPreview2 = Omit<TodoT2, "description">;
+/*type TodoPreview2 = {
+    title: string;
+    completed: boolean;
+} */
+const Todo5: TodoPreview2 = {
+    title: "God of War",
+    completed: true
+}
+console.log(Todo5);
 
 
