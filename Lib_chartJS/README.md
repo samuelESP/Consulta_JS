@@ -299,12 +299,14 @@ console.log(Income.config.type);//bar
 Claramente eu também posso passar uma váriavel para dentro do gráfico, dessa maneira:
 
 ```JS
+const m1 = ['J','F','M'];
+const m2 = ['A','M'];
 const GraphIncome = document.getElementById('GraphIncone');
 let teste = 5.5;
 let Income = new Chart(GraphIncome , {
   type: 'bar',
   data: {
-    labels: ['Jan','Fev','Mar','Apr','May'],
+     labels: m1.concat(m2),
     datasets: [{
       label: "USD per thousand",
       data: [1,teste,3,4,teste],
@@ -318,7 +320,7 @@ let Income = new Chart(GraphIncome , {
   
 })
 ```
-<img src="./imgs/variaveis.jpg" />
+<img src='./imgs/variaveis.jpg' />
 
 
 ## Options:
@@ -353,3 +355,77 @@ let Income = new Chart(GraphIncome , {
 
 console.log(Income.options.plugins.legend.display);//false
 ```
+Claramente nós podemos usar outras propriedades para mudar a legend, como exemplo:
+ - align;
+ - position;
+ - fullSize.
+E etc.....
+```JS
+ options: {
+    plugins: {
+      legend: {
+        position: 'bottom',
+        align:'start',
+      }
+      
+    }
+  }
+```
+<img src="./imgs/legend.jpg" />
+
+
+## Creating Dynamic Button to Change Chart In Chart JS
+
+Como já vimos anteriormente eu posso colocar variáveis dentro do meu Chart, mas uma coisa que não aprendemos ainda é conseguir mudar os valores do Chart já com ele aberto, ou seja, eu quero passar um valor para ele ler e mudar.
+
+Para fazer isso nós temos que utilizar o comando update:
+
+```JS
+Chartname.update();
+```
+Segue o exemplo:
+
+```JS
+const Line = document.getElementById('line');
+const Bar = document.getElementById('bar');
+
+Line.addEventListener('click', LineChange);
+Bar.addEventListener('click', BarChange);
+function LineChange() {
+  const Tline = 'line';
+  Income.config.type = Tline;
+  Income.update();
+
+}
+function BarChange() {
+  const Tbar = 'bar';
+  Income.config.type = Tbar;
+  Income.update();
+}
+
+const m1 = ['J','F','M'];
+const m2 = ['A','M'];
+
+const GraphIncome = document.getElementById('myChart');
+let teste = 5.5;
+let Income = new Chart(GraphIncome , {
+  type: 'bar',
+  data: {
+    labels: m1.concat(m2),
+    datasets: [{
+      label: "USD per thousand",
+      data: [1,teste,3,4,teste],
+      backgroundColor: ['#d1af52'],
+    }]
+  },
+  options: {
+    plugins: {
+    }
+  }
+  
+})
+```
+<img src="./imgs/BarChart.jpg" />
+
+<img src="./imgs/LineChart.jpg" />
+

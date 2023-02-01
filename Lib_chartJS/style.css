@@ -8,3 +8,18 @@ body{
     width: 50%;
     margin: auto;
 }
+
+.LineChart{
+    padding: 10px;
+    background-color: #7fe1ff;
+    color: #1b02f8;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.BarChart{
+    padding: 10px;
+    background-color: #044e01;
+    color: #3bf802;
+    border: 1px solid black;
+    cursor: pointer;
+}
