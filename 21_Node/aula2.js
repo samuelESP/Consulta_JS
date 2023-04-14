@@ -1,7 +1,7 @@
 const http = require('http');
 
-const porta = 3000
-const host = '127.0.0.1'
+const porta = 30001
+const host = '127.0.0.'
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, {

@@ -1,4 +1,16 @@
-# Node JS
+# Sumário:
+
+- **[Node](#NodeJS):**
+    - [Cats](#cat);
+    - [CreateServer](#criando-um-servidor-simples-em-node);
+    - [WriteHead](#reswriteheadstatuscode-statusmessage-headers);
+    - [Parâmetros pela URL](#passando-parâmetros-pela-url);
+    - [FS](#módulo-fs);
+    - [Express](#criando-rotas-usando-express);
+    - [Router](#modularizando-as-rotas-do-app-nodejs);
+- **[Nodemon](#nodemon);**
+
+# NodeJS
 
 De acordo com sua definição oficial, o Node é um runtime, que nada mais é do que um conjunto de códigos, API's, ou seja, são bibliotecas responsáveis pelo tempo de execução (é o que faz o seu programa rodar) que funciona como um interpretador de JavaScript fora do ambiente do navegador web.
 
@@ -74,17 +86,17 @@ statusCode: Código de status HTTP a ser enviado na resposta. Pode ser um númer
 statusMessage (opcional): Mensagem de status HTTP a ser enviada na resposta. Por padrão, é usada a mensagem correspondente ao código de status.
 headers (opcional): Um objeto contendo os cabeçalhos HTTP a serem enviados na resposta.
 
- ## Write()
+ ## Write
 
  Literalmente vai escrever no meu arquivo
 
- ## end()
+ ## end
 
  finaliza meu response process.
 
  É usado para finalizar meu response sem nenhum dado.
 
- ## listen()
+ ## listen
 
  Indica o acesso do meu servidor.
  Como parâmetro ele tem a porta o hostname e um backlog(retorna algo quando meu servidor é inicializado)
@@ -402,7 +414,7 @@ rotas.get('/', (req, res)=>{
 //Quando eu estiver no meu root vai me dar na tela essa msg de json
 
 
-rotas.get('/:cursoid', (req, res)=>{
+rotas.get('/:cursoid', (req, res)=>{//Quando eu coloco /: eu sou obrigado a passar um parâmetro, se não ele me da um erro
     const curso = req.params.cursoid
     const cursoI = cursosInfo.find( i => i.curso == curso)
     if (!cursoI) {
@@ -426,3 +438,33 @@ Essa linha de código usa o método find para buscar no array **cursosInfo** um 
 O método find é usado para retornar o primeiro elemento do array que atende à condição especificada em uma função callback. 
 No caso desse código, a função callback é **(i => i.curso == curso)**, que verifica se a propriedade curso de um objeto **i** é igual à variável curso.
 Se um objeto com essa propriedade for encontrado, ele é atribuído à constante **cursoI**. Se não for encontrado, o valor de **cursoI** será undefined.
+
+Agora vamos para nosso arquivo index.js:
+
+```JS
+const express = require('express');
+const rotas = require('./rotas/rotas')
+const app = express()
+
+app.use('/', rotas)//lembrando que rotas foram importados do meu outro arquivo
+
+app.get('*', (req, res) => {
+  res.send('CBF Cursos')
+})
+
+app.listen(3000, () => console.log('rodando'))
+```
+
+a função **app.use()** é usada para definir uma rota que deve ser correspondida para determinado conjunto de requisições HTTP.
+
+O primeiro parâmetro da função é a rota a ser correspondida, e o segundo parâmetro é a função (ou conjunto de funções) que deve ser executada quando a rota é correspondida.
+
+É importante destacar que o **'*'** usado como rota corresponderá a qualquer requisição do método GET que não tenha sido definida explicitamente na aplicação, o que pode não ser desejado em todos os casos.
+
+# nodemon
+
+`npm i nodemon -g`
+
+Ao inves de executar como o node eu vou executar com o nodemon, e toda vez que eu alterar meu arquivo ele vai salvar e rodar o servidor para mim
+
+
