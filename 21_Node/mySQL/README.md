@@ -20,6 +20,20 @@
     - [Ambiguidade](#ambiguidade);
     - [Like & Order By](#operações-de-stringlike-e-ordenaçãoorder-by);
     - [Update](#update):
+    - [Planejar um banco de dados](#planejar-um-banco-de-dados);
+    - [Alterar a Tabela](#alterar-tabela);
+    - [JOIN](#juncao-de-tabelas):
+        - [INNER JOIN](#inner-join);
+        - [LEFT JOIN](#left-join);
+        - [RIGHT JOIN](#right-join);
+    - [Funções de agregação](#funcoes-de-agregacao):
+        - [COUNT](#count);
+        - [MINIMO](#minimum);
+        - [MAXIMO](#maximum-max);
+        - [AVG](#average-avg);
+        - [Soma](#total-sum);
+
+        
 
 
 # mySQL
@@ -298,3 +312,324 @@ então a gente usa where para um Especifico:
 
 
 <img src="../imgs/update.png">
+
+# Planejar um banco de dados:
+
+Para planejar um banco de dados, entendemos que há cinco
+passos principais (MACHADO, 2014):
+1. Coletar informações.
+2. Identificar suas principais estruturas.
+3. Modelar a estrutura.
+4. Identificar nas estruturas os tipos de dados.
+5. Identificar quais são seus relacionamentos.
+
+
+ **Coletar informações** – Deve-se ter um entendimento do
+trabalho a que o seu banco de dados se destina. Ele deverá
+fornecer todas as informações necessárias para alcançar seu
+objetivo. É importante entender qual a abrangência de seu
+uso e o público-alvo, pois muitas informações deverão ser
+úteis àqueles que no futuro utilizarão seu banco de dados.
+Também é necessário identificar limitações e problemas, para
+que, na definição de sua estrutura, você possa ultrapassá-las.
+
+
+**Identificar suas principais estruturas** – Identificar suas
+principais entidades, ou seja, suas tabelas, pois elas serão
+gerenciadas pelo banco de dados. Essas tabelas representarão
+algo tangível ou intangível, e isso quer dizer que podemos
+representar pessoas, locais, clientes, cidades, bem como uma
+venda, uma reclamação, uma autorização de compra, um
+período de pagamentos de impostos, entre outras coisas.
+
+
+**Modelar a estrutura** – A parte da modelagem de estrutura
+pressupõe que as principais tabelas estejam identificadas,
+então faz-se necessário gerar uma documentação, que é o
+Diagrama Entidade-Relacionamento (DER) (HEUSER, 2009).
+Neste momento, você pode utilizar alguns softwares para
+esse desenho ou simplesmente utilizar papel e lápis. Mas
+lembre-se sempre que, por se tratar de um registro intelectual
+de sua criação, esse documento servirá para que outras
+pessoas entendam o que você idealizou como modelo de
+abstração para a resolução de um problema, e por isso ele
+sempre deverá estar atualizado.
+
+
+**Identificar nas estruturas os tipos de dados** – Neste
+momento, você identificará detalhadamente os tipos de
+dados que deverão ser armazenados, como números inteiros 
+ou decimais, cadeia de caracteres, datas, etc. Mas podemos
+ter uma classificação interessante sobre essas informações e
+classificá-las quanto ao seu conteúdo como:
+
+• **Dados brutos** – exemplo de colunas que armazenarão
+nomes, endereços, telefones, datas de nascimento, etc.
+
+• **Dados de categorização** – como verdadeiro/falso,
+certo/errado, casado/solteiro, rua/avenida, gerente/
+colaborador, etc.
+
+• **Dados de identificação** – esses campos terão a finalidade
+de criar um identificador único de um registro em suas
+tabelas, ou seja, ele não pode ser nulo ou repetir-se;
+na maioria das vezes, terá o sufixo “id” na definição do
+nome, como “cliente_id”, “produto_id”, etc.
+
+• **Dados de relação ou referência** – são os campos
+responsáveis por armazenar a relação entre duas
+tabelas, e é através dela que o banco de dados poderá
+gerenciar integridades, consultas e relacionamentos.
+
+
+**Identificar quais são seus relacionamentos** – Neste passo,
+você demonstrará a razão de um banco de dados relacional
+existir: associar dados e relacionar informações sobre várias
+tabelas de seu banco de dados. Você poderá fazer as mais
+variadas combinações, pois os mecanismos do banco de
+dados são desenvolvidos para desenvolver relações com
+definições lógicas de agregação ou desagregação de dados
+
+
+# Alterar Tabela
+
+**ALTER TABLE nome_da_tabela ação_que_deseja_executar;**
+
+<img src='../imgs/bench.png'>
+
+## Adicionar uma nova coluna:
+
+**ALTER TABLE nome_da_tabela ADD nome_da_coluna tipo_de_dados;**
+
+<img src='../imgs/addtable.png'>
+
+## Modificar o tipo de dados de uma coluna existente:
+
+**ALTER TABLE nome_da_tabela MODIFY nome_da_coluna novo_tipo_de_dados;**
+
+<img src='../imgs/modify.png'>
+
+## Renomear uma coluna:
+
+**ALTER TABLE nome_da_tabela RENAME COLUMN nome_da_coluna_antiga TO nome_da_coluna_nova;**
+
+<img src='../imgs/nova.png'>
+
+## Excluir uma coluna:
+
+**ALTER TABLE nome_da_tabela DROP COLUMN nome_da_coluna;**
+
+<img src='../imgs/drop.png'>
+
+## Adicionar uma chave primária:
+
+**ALTER TABLE nome_da_tabela ADD PRIMARY KEY (nome_da_coluna);**
+
+<img src='../imgs/pk.png'>
+
+## CONSTRAINT
+
+Constraints (Restrições);
+As Restrições são regras aplicadas nas colunas de uma tabela.
+São usadas para limitar os tipos de dados que são inseridos.
+Podem ser especificadas no momento de criação da tabela (CREATE) ou após a tabela ter sido criada (ALTER)
+
+As principais constraints são as seguintes:
+
+- NOT NULL
+- UNIQUE
+- PRIMARY KEY
+- FOREIGN KEY
+- DEFAULT
+
+<img src='../imgs/1.1.png'>
+<img src='../imgs/1.2.png'>
+<img src='../imgs/1.3.png'>
+
+Dessa maneira eu formei um index chamado de PK_pessoa, que aponta para minhas 2 primary key.
+
+ <img src='../imgs/1.4.png'>
+
+# Juncao de tabelas:
+
+## Tipo de Junção: 
+define/trata as tuplas em cada uma das
+relações que não corresponda a alguma das tuplas da outra
+relação, sendo dividido em relação interna, com o comando
+INNER JOIN, e relações externas, LEFT JOIN, RIGHT
+JOIN e FULL JOIN.
+
+## Condição de Junção: 
+define se as tuplas nas duas relações
+são correspondentes, garantindo que os atributos utilizados
+em ambas as tabelas estejam presentes tanto na sintaxe SQL
+como nos seus resultados.
+
+<img src='../imgs/join1.png' />
+
+<img src='../imgs/join2.png' />
+
+## JOIN
+
+Segundo Milani (2007), com a utilização do comando JOIN
+(Junção) é possível, por meio do SELECT, unir duas ou mais tabelas,
+ao se apontar os campos correspondentes entre elas. Uma premissa
+para se garantir a eficiência em sua utilização é a necessidade de
+que as tabelas existentes no banco de dados estejam normalizadas. 
+
+```SQL
+SELECT[campo] FROM [tabela_1>JOIN<tabela_2] ON
+ [tabela_1].[chave_primária] =
+[tabela_2].[chave_estrangeira]
+ WHERE [condição];
+```
+
+Combinar as linhas de uma tabela com as linhas de outra tabela sem ter nenhum atributo relacionando as duas tabelas; simplesmente usamos JOIN sem precisar dizer qual o atributo que vai ligar as duas tabelas:
+
+<img src='../imgs/join3.png' />
+
+Note que repetiu 3 de cada do produto para completar uma ligação com todos os da categoria, desse jeito todas as combinações são feitas.
+
+## INNER JOIN
+
+No exemplo utilizado ao longo desta seção, em que temos a
+relação entre categorias e produtos, se quisermos efetuar uma
+consulta que nos retorne o nome da categoria e seus respectivos
+nomes dos produtos, deve ser utilizado o seguinte comando:
+
+```sql
+SELECT categoria.nome, produto.nome FROM Categoria INNER JOIN
+ Produto
+ ON Categoria.Id = Produto.Id_Categoria;
+```
+
+Uso quando existe uma condição de igualdade ligando as duas tabelas:
+
+<img src='../imgs/innerjoin.png'>
+
+## LEFT JOIN
+Segundo Silberschatz (2010), quando o operador de junção
+externa for utilizado no SQL, é gerado o resultado da junção mais
+as linhas não combinadas. É possível efetuar junções externas em
+ambos os lados, ou seja, da esquerda para a direita, e da direita para
+a esquerda, dessa forma, a junção externa, independentemente do
+lado escolhido, gera uma nova tabela, que é a junção das linhas
+combinadas e não combinadas.
+
+no comando LEFT
+JOIN, as linhas da tabela da esquerda são projetadas na seleção
+juntamente com as linhas não combinadas da tabela da direita. Ou
+seja, como resultado dessa seleção, algumas linhas em que não haja
+relacionamento entre as tabelas da esquerda para a direita retornarão
+o valor nulo (NULL).
+
+
+**SELECT [campo] FROM [tabela_1] LEFTJOIN [tabela_2] ON
+ [tabela_1].[chave_primária] =
+[tabela_2].[chave_estrangeira]
+ WHERE [condição];**
+
+
+<img src='../imgs/leftjoin.png'>
+
+
+Note que como não existe nenhuma ligação com a Categoria e Informática, 
+ele me retorna NULL em todos os seus campos na tabela de Pordutos.
+
+
+## RIGHT JOIN
+Conforme afirma Silberschatz (2010), similar ao comando LEFT
+JOIN, com o comando RIGHT JOIN as linhas da tabela da direita são
+projetadas na seleção juntamente com as linhas não combinadas da
+tabela da esquerda.
+
+
+**SELECT [campo] FROM [tabela_1] RIGHTJOIN [tabela_2]
+ ON [tabela_1].[chave_primária] =
+[tabela_2].[chave_estrangeira]
+ WHERE [condição];**
+
+o rigth join é ao contrario do left join;
+
+Na minha tabela eu não tenho nenhum produto que não tem ligação com a tabela de categorias,
+logo, não sera possivel mostrar um exemplo, mas se pode imaginar,
+colocando null na parte de categorias.
+
+# Funcoes de agregacao
+
+Segundo Silberschatz (2010), as funções agregadas são aquelas que
+utilizam um multiconjunto de valores como entrada, porém, seu retorno
+é um único valor. O SQL oferece cinco funções de agregação nativas,
+entre elas:
+
+• AVERAGE: retorna a média de uma consulta.
+• MINIMUM: retorna o menor valor de uma consulta.
+• MAXIMUM: retorna o maior valor de uma consulta.
+• TOTAL: retorna o somatório de uma determinada consulta.
+• COUNT: retorna a contagem de uma determinada consulta.
+
+<img src='../imgs/ag1.png'>
+
+<img src='../imgs/ag2.png'>
+
+## COUNT
+
+Segundo Silberschatz (2010), a função agregada COUNT permite que
+se possa contar o número de registros de uma relação. A sintaxe SQL
+utilizada para tal função é descrita como:
+
+**SELECT COUNT(*) FROM tabela;**
+
+No exemplo utilizado nessa seção, temos que:
+
+
+**SELECT COUNT(*) FROM Veiculos;**
+
+<img src='../imgs/count.png'>
+
+
+# MINIMUM
+
+Segundo Silberschatz (2010), a função agregada MIN permite
+que se possa determinar o menor valor de registro em uma coluna. 
+
+SELECT MIN(COLUNA) FROM TABELA;
+
+<img src='../imgs/min1.png'>
+
+<img src='../imgs/min2.png'>
+
+
+## MAXIMUM (MAX)
+Segundo Silberschatz (2010), analogamente à função MIN, o recurso
+MAX permite que se possa determinar o maior valor de registro em uma
+coluna. A sintaxe SQL utilizada para tal função é descrita como:
+
+**SELECT MAX(coluna) FROM tabela;**
+
+No exemplo utilizado nesta seção, vamos selecionar o modelo
+do veículo de maior valor registrado na tabela, com o comando SQL abaixo
+
+**SELECT Marca, Modelo, MAX(Valor) as “Maior Valor” FROM Veiculos;**
+
+Mesma coisa do min mas com o max.
+
+## AVERAGE (AVG)
+Segundo Silberschatz (2010), a função AVG (abreviação do termo
+em inglês average, que quer dizer média) retorna a média dos valores
+em uma determinada coluna. Para isso, o SQL faz a somatória dos
+valores (obrigatoriamente numéricos) e divide o resultado pelo
+número de registros diferentes de nulo (NULL). 
+
+<img src='../imgs/avg.png'>
+
+<img src='../imgs/avg2.png'>
+
+## TOTAL (SUM)
+Segundo Silberschatz (2010), a função SUM retorna o somatório
+dos valores em uma determinada coluna. Para isso, o SQL faz o
+somatório dos valores (obrigatoriamente numéricos). 
+
+<img src='../imgs/sum1.png'>
+
+<img src='../imgs/sum2.png'>

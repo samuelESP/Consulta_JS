@@ -9,6 +9,7 @@
     - [Express](#criando-rotas-usando-express);
     - [Router](#modularizando-as-rotas-do-app-nodejs);
 - **[Nodemon](#nodemon);**
+- **[Sequilize](#sequilize)**:
 
 # NodeJS
 
@@ -465,6 +466,33 @@ O primeiro parâmetro da função é a rota a ser correspondida, e o segundo par
 
 `npm i nodemon -g`
 
-Ao inves de executar como o node eu vou executar com o nodemon, e toda vez que eu alterar meu arquivo ele vai salvar e rodar o servidor para mim
+Ao inves de executar como o node eu vou executar com o nodemon, e toda vez que eu alterar meu arquivo ele vai salvar e rodar o servidor para mim;
 
+**`nodemon NomeDoArquivoExecutado`**
+
+
+# Sequilize:
+
+
+Sequelize é uma biblioteca de ORM (Object-Relational Mapping) para Node.js 
+que permite que desenvolvedores criem aplicações Node.js que interagem com bancos de dados relacionais usando JavaScript. 
+O Sequelize suporta vários bancos de dados SQL, incluindo MySQL, PostgreSQL, SQLite e MSSQL.
+
+ORM é um padrão de design de software que permite que objetos de banco de dados 
+sejam mapeados para objetos de uma linguagem de programação, de forma que os dados possam ser
+ manipulados com código orientado a objetos em vez de consultas SQL.
+
+O Sequelize permite que os desenvolvedores definam modelos para tabelas de banco de dados 
+e usem esses modelos para executar operações de banco de dados, como criar, ler, atualizar e excluir registros. 
+Ele também fornece recursos como validação de dados, relações entre tabelas e migração de banco de dados.
+
+Com o Sequelize, os desenvolvedores podem escrever código em JavaScript para interagir com bancos de 
+dados relacionais, em vez de escrever diretamente em SQL, o que pode ser mais fácil e produtivo para muitos desenvolvedores.
+
+
+https://sequelize.org/docs/v6/getting-started/
+
+
+`npm i --save sequelize`
+`npm install --save mysql2`
 
